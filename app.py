@@ -25,14 +25,30 @@ class EloRating:
 
     def load_ratings(self):
         if os.path.exists(self.ratings_file):
-            with open(self.ratings_file, 'r', encoding='utf-8') as f:
-                return json.load(f)
+            try:
+                with open(self.ratings_file, 'r', encoding='utf-8') as f:
+                    content = f.read().strip()
+                    if not content:  # 文件为空
+                        return {}
+                    return json.loads(content)
+            except (json.JSONDecodeError, FileNotFoundError) as e:
+                print(f"警告：无法加载评分文件 {self.ratings_file}: {e}")
+                print("将使用空的评分数据")
+                return {}
         return {}
 
     def load_history(self):
         if os.path.exists(self.history_file):
-            with open(self.history_file, 'r', encoding='utf-8') as f:
-                return json.load(f)
+            try:
+                with open(self.history_file, 'r', encoding='utf-8') as f:
+                    content = f.read().strip()
+                    if not content:  # 文件为空
+                        return []
+                    return json.loads(content)
+            except (json.JSONDecodeError, FileNotFoundError) as e:
+                print(f"警告：无法加载历史文件 {self.history_file}: {e}")
+                print("将使用空的历史数据")
+                return []
         return []
 
     def load_config(self):
@@ -44,15 +60,31 @@ class EloRating:
             'initial_rating': 1500
         }
         if os.path.exists(self.config_file):
-            with open(self.config_file, 'r', encoding='utf-8') as f:
-                config = json.load(f)
-                return {**default_config, **config}
+            try:
+                with open(self.config_file, 'r', encoding='utf-8') as f:
+                    content = f.read().strip()
+                    if not content:  # 文件为空
+                        return default_config
+                    config = json.loads(content)
+                    return {**default_config, **config}
+            except (json.JSONDecodeError, FileNotFoundError) as e:
+                print(f"警告：无法加载配置文件 {self.config_file}: {e}")
+                print("将使用默认配置")
+                return default_config
         return default_config
 
     def load_sessions(self):
         if os.path.exists(self.sessions_file):
-            with open(self.sessions_file, 'r', encoding='utf-8') as f:
-                return json.load(f)
+            try:
+                with open(self.sessions_file, 'r', encoding='utf-8') as f:
+                    content = f.read().strip()
+                    if not content:  # 文件为空
+                        return {}
+                    return json.loads(content)
+            except (json.JSONDecodeError, FileNotFoundError) as e:
+                print(f"警告：无法加载会话文件 {self.sessions_file}: {e}")
+                print("将使用空的会话数据")
+                return {}
         return {}
 
     def save_ratings(self):
