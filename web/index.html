@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>ELO 图片评估工具</title>
+  <link rel="stylesheet" href="/static/css/style.css" />
+</head>
+<body>
+  <header class="site-header">
+    <h1>ELO 图片评估工具</h1>
+    <nav>
+      <a href="/compare.html">图片对比</a>
+      <a href="/annotate.html">图片标注</a>
+      <a href="/admin.html">后台总览</a>
+    </nav>
+  </header>
+
+  <main class="container">
+    <section class="card" style="padding: 28px;">
+      <h2 style="margin-top:0">欢迎</h2>
+      <p style="color:#b9c9ef">本工具用于本地 ELO 评分与图片标注，强调蓝色调与简洁体验。</p>
+      <div style="display:grid;grid-template-columns:1fr 1fr 1fr;gap:12px;margin:14px 0 8px;">
+        <a class="btn primary" href="/compare.html">开始对比打分</a>
+        <a class="btn" href="/annotate.html">上传与标注图片</a>
+        <a class="btn" href="/admin.html">查看实时排行榜</a>
+      </div>
+      <ul>
+        <li>前端：原生网页 + 蓝色玻璃拟态风格</li>
+        <li>后端：Python 标准库 HTTP + SSE 实时更新</li>
+        <li>功能：上传、标注、对比、导出 CSV</li>
+      </ul>
+    </section>
+  </main>
+
+  <footer class="site-footer">本地运行 · 无需外网</footer>
+</body>
+</html>

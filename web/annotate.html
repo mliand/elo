@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>图片标注 - ELO</title>
+  <link rel="stylesheet" href="/static/css/style.css" />
+</head>
+<body>
+  <header class="site-header">
+    <h1>图片上传与标注</h1>
+    <nav>
+      <a href="/index.html">首页</a>
+      <a href="/compare.html">图片对比</a>
+      <a href="/admin.html">后台总览</a>
+    </nav>
+  </header>
+
+  <main class="container grid-two">
+    <section class="card">
+      <h2>上传图片</h2>
+      <input type="file" id="fileInput" multiple accept="image/*" />
+      <button class="btn" id="btnUpload">上传</button>
+      <div id="uploadMsg" class="msg"></div>
+      <hr />
+      <h2>图片列表</h2>
+      <div id="imageList" class="image-list"></div>
+    </section>
+
+    <section class="card">
+      <h2>标注</h2>
+      <div class="annotator">
+        <div class="canvas-wrap">
+          <img id="annImg" alt="待标注图片" />
+          <canvas id="annCanvas"></canvas>
+        </div>
+        <div class="ann-actions">
+          <label>标签：<input id="annLabel" type="text" placeholder="标签名称" /></label>
+          <button class="btn primary" id="btnAddBox">添加框</button>
+          <button class="btn" id="btnSaveAnn">保存标注</button>
+          <button class="btn" id="btnClear">清空</button>
+          <span id="annMsg" class="msg"></span>
+        </div>
+        <div>
+          <h3>已标注框</h3>
+          <ul id="boxList" class="box-list"></ul>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <script src="/static/js/api.js"></script>
+  <script src="/static/js/annotate.js"></script>
+</body>
+</html>
+

@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>后台总览 - ELO</title>
+  <link rel="stylesheet" href="/static/css/style.css" />
+</head>
+<body>
+  <header class="site-header">
+    <h1>后台实时总览</h1>
+    <nav>
+      <a href="/index.html">首页</a>
+      <a href="/compare.html">图片对比</a>
+      <a href="/annotate.html">图片标注</a>
+    </nav>
+  </header>
+
+  <main class="container">
+    <section class="card">
+      <div class="actions">
+        <button class="btn" id="btnRefresh">刷新</button>
+        <a class="btn" href="/api/export">导出CSV</a>
+        <span id="status" class="msg"></span>
+      </div>
+      <table class="ratings-table" id="ratingsTable">
+        <thead>
+          <tr>
+            <th>排名</th>
+            <th>预览</th>
+            <th>文件名</th>
+            <th>评分</th>
+          </tr>
+        </thead>
+        <tbody></tbody>
+      </table>
+    </section>
+  </main>
+
+  <script src="/static/js/api.js"></script>
+  <script src="/static/js/admin.js"></script>
+</body>
+</html>
+
