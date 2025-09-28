@@ -1,5 +1,5 @@
 {
-  "initial_rating": 1200.0,
+  "initial_rating": 1200,
   "k_factor": 32,
   "caption_dir": "caption",
   "models_dir": "models",

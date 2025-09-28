@@ -562,10 +562,19 @@ def build_handler(ds: DataStore, broker: EventBroker, genq: GenQueue | None = No
             return stems
 
         def _scan_models_list(self) -> List[str]:
+            # Collect models that have images on disk, and union with any
+            # 'model:<name>' entries present in ratings to ensure leaderboard
+            # can render even if sample images are missing.
             stems = self._scan_model_stems()
-            models = set()
+            models: set[str] = set()
             for m in stems.values():
                 models.update(m.keys())
+            try:
+                for k in list(ds.ratings.keys()):
+                    if isinstance(k, str) and k.startswith("model:"):
+                        models.add(k.split(":", 1)[1])
+            except Exception:
+                pass
             return sorted(models)
 
         def _pick_model_samples(self) -> Dict[str, Dict[str, str]]:

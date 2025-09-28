@@ -26,6 +26,18 @@ async function refreshOnce() {
 window.addEventListener('DOMContentLoaded', () => {
   const status = document.getElementById('status');
   document.getElementById('btnRefresh').addEventListener('click', refreshOnce);
+  const btnReload = document.getElementById('btnReload');
+  if (btnReload) {
+    btnReload.addEventListener('click', async () => {
+      try {
+        await apiGet('/api/reload');
+        await refreshOnce();
+        status.textContent = 'Reloaded from disk';
+      } catch (e) {
+        status.textContent = 'Reload failed';
+      }
+    });
+  }
   // load config and populate inputs
   (async () => {
     try {
