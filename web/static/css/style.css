@@ -113,7 +113,7 @@ body::before {
 .msg { margin-left: 12px; color: var(--muted); }
 
 .pair-container { display: grid; grid-template-columns: 1fr 1fr; gap: 24px; align-items: stretch; }
-.img-col { display: flex; flex-direction: column; gap: 10px; }
+.img-col { display: flex; flex-direction: column; gap: 10px; min-width: 0; }
 .img-wrap {
   position: relative;
   background: linear-gradient(180deg, #0a1222, #0a162a);
@@ -122,10 +122,11 @@ body::before {
   padding: 8px;
   min-height: 320px;
   display: flex; align-items: center; justify-content: center;
-  overflow: auto;
+  /* Avoid layout overflow causing the right panel to protrude */
+  overflow: hidden;
   box-shadow: 0 12px 30px rgba(20,40,80,0.35) inset, 0 10px 24px rgba(10,16,28,0.35);
 }
-.img-wrap img { max-width: none; max-height: none; border-radius: 10px; }
+.img-wrap img { max-width: 100%; max-height: 100%; object-fit: contain; border-radius: 10px; }
 .img-wrap:hover img { transform: none; }
 .img-wrap.loading::before { content: ""; position: absolute; inset: 0; display: block; background: linear-gradient(180deg, rgba(7,12,24,0.6), rgba(7,12,24,0.6)); }
 .img-wrap.loading::after { content: ""; position: absolute; left: 50%; top: 50%; transform: translate(-50%, -50%); width: 32px; height: 32px; border-radius: 999px; border: 3px solid rgba(255,255,255,.28); border-top-color: #60a5fa; animation: spin .9s linear infinite; }
@@ -203,7 +204,8 @@ body::before {
   text-overflow: ellipsis;
 }
 .pair-container .img-wrap { min-height: 560px; }
-.pair-container .img-wrap img { width: auto; height: auto; max-width: none; max-height: none; }
+/* Keep images contained within their boxes on compare page as well */
+.pair-container .img-wrap img { width: 100%; height: auto; max-width: 100%; max-height: 100%; object-fit: contain; }
 .finish-burst { position: absolute; left: 50%; top: 50%; transform: translate(-50%, -50%); width: 140px; height: 140px; border-radius: 999px; border: 3px solid #22c55e; pointer-events: none; animation: _burst .6s ease-out forwards; filter: drop-shadow(0 0 16px rgba(34,197,94,.35)); }
 .finish-burst.neutral { border-color: #60a5fa; filter: drop-shadow(0 0 16px rgba(96,165,250,.35)); }
 @keyframes _burst { from { opacity:.85; transform: translate(-50%, -50%) scale(.85); } to { opacity:0; transform: translate(-50%, -50%) scale(1.6); } }
