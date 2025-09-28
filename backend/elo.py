@@ -6,7 +6,7 @@ from typing import Tuple
 
 
 DEFAULT_K = 32
-DEFAULT_INITIAL_RATING = 1500.0
+DEFAULT_INITIAL_RATING = 1200.0
 
 
 @dataclass
@@ -47,4 +47,3 @@ def update_ratings(
         r2_after=r_l_after,
         delta=r_w_after - r_winner,
     )
-

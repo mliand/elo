@@ -1,0 +1,17 @@
+{
+  "initial_rating": 1200.0,
+  "k_factor": 32,
+  "caption_dir": "caption",
+  "models_dir": "models",
+  "a_dir": "a",
+  "b_dir": "b",
+  "comfy_server": "10.30.100.201:8844",
+  "rt_workflow": "/Users/mccc/Public/elo/anime_api.json",
+  "rt_models": [
+    "picro_l.safetensors",
+    "animagine-xl-4.0.safetensors",
+    "Illustrious-XL-v2.0.safetensors",
+    "ponyDiffusionV6XL.safetensors"
+  ],
+  "rt_negative": "lowres, bad anatomy, bad hands, text, error, missing finger, extra digits, fewer digits, cropped, worst quality, low quality, low score, bad score, average score, signature, watermark, username, blurry, score 0, score 1, score 2, score 3, score 4, score 5"
+}

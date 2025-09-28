@@ -5,38 +5,36 @@
   <meta name="viewport" content="width=device-width, initial-scale=1" />
   <title>图片对比 - ELO</title>
   <link rel="stylesheet" href="/static/css/style.css" />
+  <link rel="icon" href="/static/favicon.svg" type="image/svg+xml" />
 </head>
 <body>
   <header class="site-header">
-    <h1>图片对比打分</h1>
-    <nav>
-      <a href="/index.html">首页</a>
-      <a href="/annotate.html">图片标注</a>
-      <a href="/admin.html">后台总览</a>
-    </nav>
+    <h1></h1>
+    <nav></nav>
   </header>
 
   <main class="container">
-    <section class="card">
+    <section class="card animate-fade-up">
+      <div class="prompt-banner" id="currentPrompt" title="Prompt"></div>
       <div class="pair-container">
         <div class="img-col">
+          <div class="side-label">Left image</div>
           <div class="img-wrap" id="wrapA">
-            <img id="imgA" alt="A" />
+            <img id="imgA" alt="A" class="swap-target" />
           </div>
-          <div class="meta" id="metaA"></div>
-          <button class="btn primary" id="btnA">选择左侧 (A)</button>
+          <button class="btn primary" id="btnA">Select Left (A)</button>
         </div>
         <div class="img-col">
+          <div class="side-label">Right image</div>
           <div class="img-wrap" id="wrapB">
-            <img id="imgB" alt="B" />
+            <img id="imgB" alt="B" class="swap-target" />
           </div>
-          <div class="meta" id="metaB"></div>
-          <button class="btn primary" id="btnB">选择右侧 (B)</button>
+          <button class="btn primary" id="btnB">Select Right (B)</button>
         </div>
       </div>
       <div class="actions">
-        <button class="btn" id="btnTie">平局</button>
-        <button class="btn" id="btnNext">换一对</button>
+        <button class="btn" id="btnTie">Tie</button>
+        <button class="btn" id="btnNext">Next Pair</button>
         <span id="msg" class="msg"></span>
       </div>
     </section>

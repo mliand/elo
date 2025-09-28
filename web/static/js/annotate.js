@@ -142,21 +142,9 @@ async function saveAnnotations() {
   }
 }
 
-async function doUpload() {
-  const files = $('fileInput').files;
-  if (!files || files.length === 0) return;
-  $('uploadMsg').textContent = '上传中...';
-  try {
-    await apiUploadFiles(files);
-    $('uploadMsg').textContent = '上传完成';
-    await refreshList();
-  } catch (e) {
-    $('uploadMsg').textContent = '上传失败：' + e;
-  }
-}
+// 上传和导入能力已移除（按需保留接口）。
 
 window.addEventListener('DOMContentLoaded', () => {
-  $('btnUpload').addEventListener('click', doUpload);
   $('btnSaveAnn').addEventListener('click', saveAnnotations);
   $('btnClear').addEventListener('click', () => { boxes = []; renderBoxes(); });
   $('btnAddBox').addEventListener('click', (e) => e.target.classList.toggle('active'));

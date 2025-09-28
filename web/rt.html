@@ -1,0 +1,70 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Diffusion_Anime ELO</title>
+  <link rel="icon" href="/static/favicon.svg" type="image/svg+xml" />
+  <link rel="stylesheet" href="/static/css/style.css" />
+  <style>
+    .form-grid { display: grid; grid-template-columns: repeat(6, 1fr); gap: 12px; }
+    .form-grid .col-span-2 { grid-column: span 2; }
+    .form-grid .col-span-3 { grid-column: span 3; }
+    .form-grid .col-span-6 { grid-column: span 6; }
+    textarea { width: 100%; min-height: 74px; }
+    input[type="text"], input[type="number"] { width: 100%; }
+    .muted { color: #666; font-size: 12px; }
+  </style>
+  <script>
+    // optional: allow specifying API_BASE via query param
+    (function(){
+      try {
+        const q = new URLSearchParams(location.search);
+        const base = q.get('base');
+        if (base) window.API_BASE = base;
+      } catch {}
+    })();
+  </script>
+</head>
+<body>
+  <header class="site-header">
+    <h1>Elo</h1>
+    <nav></nav>
+  </header>
+
+  <main class="container">
+    <section class="card animate-fade-up">
+      <div class="prompt-bar">
+        <label for="promptInput">Prompt</label>
+        <input id="promptInput" type="text" placeholder="在此输入自定义 Prompt（留空则从 prompt.json 随机选择）" />
+        <label for="negInput">Negative</label>
+        <input id="negInput" type="text" placeholder="可选：负面词（留空用默认）" />
+        <button class="btn" id="btnEnq">排队生成</button>
+        <span class="queue-info" id="queueInfo"></span>
+      </div>
+      <div class="prompt-banner" id="currentPrompt" title="Prompt"></div>
+      <div class="pair-container">
+        <div class="img-col">
+          <div class="side-label" id="labLeft">Left</div>
+          <div class="img-wrap" id="wrapA"><img id="imgA" alt="A" class="swap-target" /></div>
+          <button class="btn" id="btnA">选择左图</button>
+        </div>
+        <div class="img-col">
+          <div class="side-label" id="labRight">Right</div>
+          <div class="img-wrap" id="wrapB"><img id="imgB" alt="B" class="swap-target" /></div>
+          <button class="btn" id="btnB">选择右图</button>
+        </div>
+      </div>
+      <div class="actions">
+        <button class="btn" id="btnTie">平局</button>
+        <button class="btn primary" id="btnNew">直接生成</button>
+        <span id="roundInfo" class="muted"></span>
+        <span id="msg" class="msg"></span>
+      </div>
+    </section>
+  </main>
+
+  <script src="/static/js/api.js"></script>
+  <script src="/static/js/rt.js"></script>
+</body>
+</html>
